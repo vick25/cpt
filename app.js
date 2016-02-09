@@ -18,11 +18,11 @@
 		source: new ol.source.MapQuest({layer:'sat'})
 	})
 	//esri base map
-	var esriBase = new ol.layer.Tile({
+	/*var esriBase = new ol.layer.Tile({
 		source: new ol.source.XYZ({
 			url:'http://server.arcgisonline.com/ArcGIS/rest/services' + 'World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
 		})
-	})
+	})*/
 
 	//layers from geoserver
 	var boundarySource = new ol.source.TileWMS({
@@ -36,7 +36,7 @@
 		name: 'County boundary'
 	});
 
-	var townsSource = new ol.source.TileWMS({
+	/*var townsSource = new ol.source.TileWMS({
 		url: 'http://localhost:8080/geoserver/wms',
 		params:{'LAYERS':'cpt:nairobi_towns'},
 		serverType:'geoserver' 
@@ -45,55 +45,53 @@
 	var countyTowns = new ol.layer.Tile({
 		source: townsSource,
 		name: 'Towns'
-	});
+	});*/
 
-	var projectsSource = new ol.source.TileWMS({
+	/*project layers defined below*/
+	var allProjectsSource = new ol.source.TileWMS({
 		url: 'http://localhost:8080/geoserver/wms',
 		params:{'LAYERS':'cpt:projects'},
 		serverType:'geoserver'
 	});
 	var allProjects = new ol.layer.Tile({
-		source: projectsSource,
-		name: 'all projects'
+		source: allProjectsSource,
+		name: 'All projects'
 	});
 
 	
-
-	/*
-	//Projects layers to be added here and parameters changed appropriately
 	var ongoingProjects = new ol.layer.Tile({ 
 		source: new ol.source.TileWMS({
 			url: 'http://localhost:8080/geoserver/wms',
-			params: { 'LAYERS':'homabay:homabay_constituencies'},//to give appropriate params
+			params: { 'LAYERS':'cpt:ongoing'},
 			serverType:'geoserver'
 		}),
 		name: 'Ongoing projects'
 	});
 
-	var finishedProjects = new ol.layer.Tile({ 
+	var completedProjects = new ol.layer.Tile({ 
 		source: new ol.source.TileWMS({
 			url: 'http://localhost:8080/geoserver/wms',
-			params: { 'LAYERS':'homabay:homabay_constituencies'},//to give appropriate params
+			params: { 'LAYERS':'cpt:completed'},
 			serverType:'geoserver'
 		}),
-		name: 'Finished projeccts'
+		name: 'Completed projeccts'
 	});
 	var proposedProjects = new ol.layer.Tile({ 
 		source: new ol.source.TileWMS({
 			url: 'http://localhost:8080/geoserver/wms',
-			params: { 'LAYERS':'homabay:homabay_constituencies'},//to give appropriate params
+			params: { 'LAYERS':'cpt:proposed'},
 			serverType:'geoserver'
 		}),
 		name: 'Proposed projects'
 	});
-	var stalledProjects = new ol.layer.Tile({ 
+	/*var stalledProjects = new ol.layer.Tile({ 
 		source: new ol.source.TileWMS({
 			url: 'http://localhost:8080/geoserver/wms',
 			params: { 'LAYERS':'homabay:homabay_constituencies'},//to give appropriate params
 			serverType:'geoserver'
 		})
-	});
-	*/
+	});*/
+	
 
 	//var minExtent = ol.proj.transform([33.90,-0.95],'EPSG:4326','EPSG:3857')
 	//var extent = [33.90,-0.95,35.06,-0.36]
@@ -101,7 +99,7 @@
 	//Creating base maps layer group
 	var baseMaps = new ol.layer.Group({
 		'title':'Base maps',
-		layers:[osmlayer,esriBase]//only one base map used
+		layers:[osmlayer]//only one base map used
 	})
 	//Creating overlay group
 	//NB: To write code to asynchronously change map layers based on choice from user
@@ -121,7 +119,7 @@
 
 	var overLays = new ol.layer.Group({
 		'title':'Projecst',
-		layers:[countybnd,allProjects,countyTowns]
+		layers:[countybnd,allProjects,proposedProjects,ongoingProjects,completedProjects,]
 	})
 	
 	//Configure view properties for map instance 
@@ -185,7 +183,26 @@
 
 
 	/*this function changes the cursor to a pointer when cursor is on map*/
-	map.on('pointermove', function(evt) {
+	var cursorHoverStyle = "pointer";
+	var target = map.getTarget();
+	var mTarget = typeof target === "string" ? $("#"+target) : $(target);
+	
+	map.on("pointermove", function (event) {
+    	var mouseCoordInMapPixels = [event.originalEvent.offsetX, event.originalEvent.offsetY];
+
+    	//get feature at mouse coords
+    	var hit = map.forEachFeatureAtPixel(mouseCoordInMapPixels, function (feature, layer) {
+        	return true;
+    	});
+
+    	if (hit) {
+        	mTarget.css("cursor", cursorHoverStyle);
+    	} else {
+        	mTarget.css("cursor", "");
+    	}
+	});
+
+	/*map.on('pointermove', function(evt) {
 		if (evt.dragging) {
 		    return;
 		}
@@ -194,7 +211,7 @@
 		    return true;
 		});
 		map.getTargetElement().style.cursor = hit ? 'pointer' : '';
-	});
+	});*/
 
 	/*Add a click handler to the map to render the popup.*/
 	map.on('singleclick', function(evt) {
