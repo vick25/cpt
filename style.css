@@ -1,0 +1,189 @@
+/*style rules for the web app*/
+
+
+div#container{
+	margin-left: 5%;
+	width:90%;
+	padding: 0px;
+	font-family: arial, verdana, sans-serif;
+
+}
+#header{
+	width:100%;
+	height: 100px;
+	display: block;
+	margin-right:5%;
+	margin-top: 1px;
+	margin-bottom: 10px;
+	background-color: #ffffff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border:1px solid #666666;
+	text-align: center;
+
+
+}
+#logo1{
+	display:block;
+	height: 100px;
+	width:120px;
+}
+#logo2{
+	
+	height: 100px;
+	width: 90px;
+	margin-right: 120px;
+	margin-top: -100px;
+	float: right;
+}
+#hblogo{
+	position: absolute;
+	height: 100px;
+	width:100px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+#knlogo{
+	position: absolute;
+	height: 100px;
+	width:100px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	
+}
+#heading{
+	position: absolute;
+	display: inline-block;
+	margin-top: -60px;
+	margin-left: -210px;
+}
+#description{
+	position: absolute;
+	display: inline-block;
+	margin-top: -25px;
+	margin-left: -270px;
+	font-family: verdana;
+}
+
+.map{
+	display: inline-block;
+	margin-top:5px;
+	width:75%;
+	height:485px;
+	border:1px solid #666666;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;
+}
+#layerpanel{
+	float: right;
+	display: inline-block;
+	/*margin-left: 2px;*/
+	margin-top: 5px;
+	width: 24%;
+	height: 485px;
+	border:1px solid #666666;
+	padding-left: 5px;
+}
+p.attribute{
+	font-size: 14px;
+	font-style: italic;
+	font-family: serif;
+}
+#attributes{
+	height: 20px;
+	margin-left: 0px;
+	padding: 20px;
+	margin: 50px;
+
+}
+#info{
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+#footer{
+	width:100%;
+	height:85px;
+	margin-top: 20px;
+	border:1px solid #666666;
+	display: block;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+#copyright{
+	margin-top: 65px;
+	margin-left: 40%;
+}
+#copyright h5{
+	font-style: italic;
+	font-size: 8pt;
+}
+/*map pop up style rules*/
+.ol-popup {
+  position: absolute;
+  background-color: #ffffff;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 280px;
+  max-width: 500px;
+}
+
+#popup-content{
+	border-style: none;
+}
+
+iframe{
+	margin-left: 0px;
+	padding-top: 20px;
+	border-radius: 10px;
+	border-style: none;
+}
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+.ol-popup-closer:after {
+  content: "✖";
+}
+map .ol-mouse-position {
+	
+	font-style: italic;
+}
+
+#financialYear{
+	list-style: none;
+}
+#projectStatus{
+	list-style: none;
+}
+#layer1 {
+	color: red;
+}
