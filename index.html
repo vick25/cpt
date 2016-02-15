@@ -18,8 +18,8 @@
 		<div id="logo1">
 		<a href="index.html"><img id="hblogo"src="img/nclogo.png" /></a>
 		</div>
-		<h2 id="heading">Nairobi County Projects Tracker</h2>
-		<p id="description">A web mapping application for tracking county development projects</p>
+		<h2 id="heading">Nairobi City County Projects</h2>
+		<p id="description">A web mapping application for monitoring county development projects</p>
 		<div id="logo2"><a href="index.html"><img id="knlogo" src="img/kenya_logo.png" /></a></div>
 	</div>
 	<div id="map" class="map"></div>
@@ -33,15 +33,15 @@
 		
 		<p>Status:</p>
 		<ul id="projectStatus">
-			<li><label class="checkbox"><input type="checkbox" id="layer1" checked /> Ongoing Projects</label></li>
-			<li><label class="checkbox"><input type="checkbox" id="layer2"  /> Proposed Projects</label></li>
-			<li><label class="checkbox"><input type="checkbox" id="layer3"  /> Completed Projects</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="2" id="ongoingProjects" onclick = 'switchlayer(this)' checked /> Ongoing Projects</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="3" id="proposedProjects" onclick = 'switchlayer(this)' /> Proposed Projects</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="4" id="comletedProjects" onclick = 'switchlayer(this)' /> Completed Projects</label></li>
 		</ul>
 		<p>Financial Year:</p>
 		<ul id="financialYear">
-			<li><label class="checkbox"><input type="checkbox" id="layer1" checked /> 2014/2015</label></li>
-			<li><label class="checkbox"><input type="checkbox" id="layer2"  /> 2013/2014</label></li>
-			<li><label class="checkbox"><input type="checkbox" id="layer3"  /> 2012/2013</label></li>
+			<li><label class="checkbox"><input type="checkbox" id="layer1" onclick = 'layerSwitcher()' /> 2014/2015</label></li>
+			<li><label class="checkbox"><input type="checkbox" id="layer2" onclick = 'layerSwitcher()' /> 2013/2014</label></li>
+			<li><label class="checkbox"><input type="checkbox" id="layer3" onclick = 'layerSwitcher()' disabled="true" /> 2012/2013</label></li>
 		</ul>
 		<h6>Statistics by Sub-counties</h6>
 		<p id="projectDescription">
