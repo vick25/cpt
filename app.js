@@ -1,12 +1,12 @@
 
 /*
-	County projects tracker application
     This application enables visualization of county development projects that have been mapped
-    on the ground and their status information updated periodically
+    on the ground and their status information updated periodically.
+    This application is based on openLayers 3.5
 */
 
 
-	/* create layer and source instances */
+	/* create layer and their source instances */
 
 	//layers array to hold all layers
 	var layersArray = [];
@@ -25,7 +25,8 @@
 	var boundarySource = new ol.source.TileWMS({
 		url: 'http://localhost:8080/geoserver/wms',
 		params: { 'LAYERS':'cpt:NairobiSubCounties',transparent:'true'},
-		serverType:'geoserver'
+		serverType:'geoserver',
+		tiled: true
 	});
 
 	var countybnd = new ol.layer.Tile({
@@ -85,7 +86,7 @@
 	layersArray.push(ongoingProjects); //2
 	layersArray.push(proposedProjects); //3
 	layersArray.push(completedProjects); //4
-	layersArray.push(allProjects); //5
+	//layersArray.push(allProjects); //5
 
 	
 	
@@ -182,15 +183,7 @@
 		overlay.setPosition(coordinate);	
     });
 
-	//layer panel handlers **experimental
-		/*$('input[type=checkbox]').on('change', function () {
-        var layer = {
-            layer1: layer1,
-            layer2: layer2
-        }[$(this).attr('id')];
-        layer.setVisible(!layer.getVisible());
-		
-	});*/
+	
 
 
 
