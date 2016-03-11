@@ -1,0 +1,23 @@
+#main_body{
+	margin-left: 30%;
+	width: 60%;
+
+}
+ul{
+	list-style: none;
+}
+label{
+	cursor: default;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+li{
+	padding: 4px;
+}
+ul{
+	margin-left: 12%;
+}
+p{
+	font-family: fantasy;
+	margin-left: 8%;
+}
