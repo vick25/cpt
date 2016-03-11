@@ -24,7 +24,7 @@
 	//subcounties boundaries layer
 	var boundarySource = new ol.source.TileWMS({
 		url: 'http://localhost:8080/geoserver/wms',
-		params: { 'LAYERS':'cpt:NairobiSubCounties',transparent:'true'},
+		params: { 'LAYERS':'cpt:nairobi_sub_counties',transparent:'true'},
 		serverType:'geoserver',
 		tiled: true
 	});
@@ -49,7 +49,7 @@
 
 	var ongoingProjectsSource = new ol.source.TileWMS({
 		url: 'http://localhost:8080/geoserver/wms',
-		params: { 'LAYERS':'cpt:ongoingProjects'},
+		params: { 'LAYERS':'cpt:ongoing_projects'},
 		serverType:'geoserver'
 	});
 	var ongoingProjects = new ol.layer.Tile({ 
@@ -60,7 +60,7 @@
 
 	var completedProjectsSource = new ol.source.TileWMS({
 		url: 'http://localhost:8080/geoserver/wms',
-		params: { 'LAYERS':'cpt:completedProjects'},
+		params: { 'LAYERS':'cpt:completed_projects'},
 		serverType:'geoserver'
 	});
 	var completedProjects = new ol.layer.Tile({ 
@@ -71,7 +71,7 @@
 
 	var proposedProjectsSource = new ol.source.TileWMS({
 		url: 'http://localhost:8080/geoserver/wms',
-		params: { 'LAYERS':'cpt:proposedProjects'},
+		params: { 'LAYERS':'cpt:proposed_projects'},
 		serverType:'geoserver'
 	});
 	var proposedProjects = new ol.layer.Tile({ 

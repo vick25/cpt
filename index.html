@@ -8,6 +8,7 @@
 	<!--<script src="http://localhost:8080/countymap/DataTables-1.10.10/DataTables-1.10.10/media/js/jquery.js" type="text/javascript"></script>-->
 	<script src="http://localhost:82/cpt/src/jquery/jquery.js" type="text/javascript"></script>
 	<script src="http://localhost:82/cpt/src/ol3/js/ol-debug.js" type="text/javascript"></script>
+	<script src="http://localhost:82/cpt/src/chartjs/Chart.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="http://localhost:82/cpt/src/ol3/css/ol.css" type="text/css" />
 	<link rel="stylesheet" href="http://localhost:82/cpt/style.css" type="text/css"></style>
 </head>
@@ -19,7 +20,7 @@
 		<a href="index.html"><img id="hblogo"src="img/nclogo.png" /></a>
 		</div>
 		<h2 id="heading">Nairobi City County Development Projects</h2>
-		<p id="description">A web mapping application for monitoring county development projects</p>
+		<p id="description">&nbsp &nbsp &nbsp &nbsp Visualizing and monitoring county development projects</p>
 		<div id="logo2"><a href="index.html"><img id="knlogo" src="img/kenya_logo.png" /></a></div>
 	</div>
 	<div id="map" class="map"></div>
@@ -39,14 +40,44 @@
 		</ul>
 		<p>Financial Year:</p>
 		<ul id="financialYear">
-			<li><label class="checkbox"><input type="checkbox" id="layer1" onclick = 'layerSwitcher()' /> 2014/2015</label></li>
-			<li><label class="checkbox"><input type="checkbox" id="layer2" onclick = 'layerSwitcher()' /> 2013/2014</label></li>
-			<li><label class="checkbox"><input type="checkbox" id="layer3" onclick = 'layerSwitcher()' disabled="true" /> 2012/2013</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="5" id="layer1" onclick = 'switchlayer(this)' /> 2014/2015</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="6" id="layer2" onclick = 'switchlayer(this)' /> 2013/2014</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="7" id="layer3" onclick = 'switchlayer(this)' disabled="true" /> 2012/2013</label></li>
 		</ul>
-		<h6>Statistics by Sub-counties</h6>
-		<p id="projectDescription">
-			To display pie chart of projects per sub-county
-		</p>
+		<div id="pie_chart">
+		<h6>Percentage of mapped projects</h6>
+		<div id="chart">
+			<canvas id="cprojects" width="150" height="150"></canvas>
+			<script>
+				var projects= document.getElementById("cprojects").getContext("2d");
+				new Chart(projects).Pie(pieData, pieOptions);
+				var pieData = [
+					{
+						value: 20,
+						color:"#878BB6",
+						label: 'education'
+					},
+					{
+						value : 40,
+						color : "#4ACAB4"
+					},
+					{
+						value : 10,
+						color : "#FF8153"
+					},
+					{
+						value : 30,
+						color : "#FFEA88"
+					}
+				];
+				var pieOptions = {
+					segmentShowStroke : false,
+					animateScale : true
+				}
+			</script>
+		</div>
+		
+		</div>
 	</div>
 	<div id="attribute">
 	<p class="attribute">KEY: &nbsp<img src="img/green.png" height="20px" width="20px"> :Ongoing &nbsp<img src="img/red.png" height="20px" width="20px"> :Proposed &nbsp<img src="img/blue_dark.png" height="20px" width="20px"> :Complete
@@ -65,6 +96,7 @@
 
 	<!--this script loads map and features after page loads-->
 	<script src="http://localhost:82/cpt/app.js" type="text/javascript"></script>
+
 </div>
 </body>
 </html>

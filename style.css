@@ -35,6 +35,7 @@ div#container{
 	margin-right: 120px;
 	margin-top: -100px;
 	float: right;
+
 }
 #hblogo{
 	position: absolute;
@@ -61,7 +62,7 @@ div#container{
 	position: absolute;
 	display: inline-block;
 	margin-top: -25px;
-	margin-left: -270px;
+	margin-left: -240px;
 	font-family: verdana;
 }
 
@@ -104,7 +105,7 @@ p.attribute{
 #footer{
 	width:100%;
 	height:85px;
-	margin-top: 20px;
+	margin-top: 5px;
 	border:1px solid #666666;
 	display: block;
 	border-bottom-left-radius: 10px;
@@ -131,6 +132,7 @@ p.attribute{
   left: -50px;
   min-width: 280px;
   max-width: 500px;
+  height: 310px;
 }
 
 #popup-content{
@@ -142,6 +144,7 @@ iframe{
 	padding-top: 20px;
 	border-radius: 10px;
 	border-style: none;
+	height: 300px;
 }
 .ol-popup:after, .ol-popup:before {
   top: 100%;
