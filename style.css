@@ -101,6 +101,15 @@ p.attribute{
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
 }
+#h6{
+	font-size: 80%;
+	font-style: ;
+}
+#mapped{
+	font-size: 200%;
+	font-weight: bold;
+	padding-left: 50px;
+}
 
 #footer{
 	width:100%;

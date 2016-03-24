@@ -4,15 +4,21 @@
 	<meta charset='utf-8'>
 	<link rel="shortcut icon" href="http://localhost:82/cpt/img/favicon.png">
 	<title>County projects tracker</title>
-	<!--<script src="http://localhost:8080/countymap/DataTables-1.10.10/DataTables-1.10.10/media/js/jquery.dataTables.js" type="text/javascript"></script>-->
-	<!--<script src="http://localhost:8080/countymap/DataTables-1.10.10/DataTables-1.10.10/media/js/jquery.js" type="text/javascript"></script>-->
+	
 	<script src="http://localhost:82/cpt/src/jquery/jquery.js" type="text/javascript"></script>
 	<script src="http://localhost:82/cpt/src/ol3/js/ol-debug.js" type="text/javascript"></script>
-	<script src="http://localhost:82/cpt/src/chartjs/Chart.js" type="text/javascript"></script>
+	<script src="http://localhost:82/cpt/src/canvasjs/canvasjs.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="http://localhost:82/cpt/src/ol3/css/ol.css" type="text/css" />
 	<link rel="stylesheet" href="http://localhost:82/cpt/style.css" type="text/css"></style>
 </head>
-<body>
+<body onload="uncheck()">
+
+<script type="text/javascript">
+	function uncheck(){
+	$(':checkbox:checked').prop('checked',false);
+}
+</script>
+
 
 <div id="container">
 	<div id="header">
@@ -40,50 +46,56 @@
 		</ul>
 		<p>Financial Year:</p>
 		<ul id="financialYear">
-			<li><label class="checkbox"><input type="checkbox" value="5" id="layer1" onclick = 'switchlayer(this)' /> 2014/2015</label></li>
-			<li><label class="checkbox"><input type="checkbox" value="6" id="layer2" onclick = 'switchlayer(this)' /> 2013/2014</label></li>
-			<li><label class="checkbox"><input type="checkbox" value="7" id="layer3" onclick = 'switchlayer(this)' disabled="true" /> 2012/2013</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="5" id="2014/2015" onclick = 'switchlayer(this)' /> 2014/2015</label></li>
+			<li><label class="checkbox"><input type="checkbox" value="6" id="2013/2014" onclick = 'switchlayer(this)' /> 2013/2014</label></li>
 		</ul>
-		<div id="pie_chart">
-		<h6>Percentage of mapped projects</h6>
-		<div id="chart">
-			<canvas id="cprojects" width="150" height="150"></canvas>
-			<script>
-				var projects= document.getElementById("cprojects").getContext("2d");
-				new Chart(projects).Pie(pieData, pieOptions);
-				var pieData = [
-					{
-						value: 20,
-						color:"#878BB6",
-						label: 'education'
-					},
-					{
-						value : 40,
-						color : "#4ACAB4"
-					},
-					{
-						value : 10,
-						color : "#FF8153"
-					},
-					{
-						value : 30,
-						color : "#FFEA88"
-					}
-				];
-				var pieOptions = {
-					segmentShowStroke : false,
-					animateScale : true
-				}
-			</script>
-		</div>
 		
-		</div>
+		<script type="text/javascript">
+		window.onload = function () {
+		 CanvasJS.addColorSet("projectColors",
+                [//colorSet Array
+
+                "#39ff33",
+                "#f0162d",
+                "#062df1"               
+                ]);
+		var chart = new CanvasJS.Chart("chart",
+		{
+			colorSet: "projectColors",
+			title:{
+				fontSize: 11.5,
+				text: "Total number of projects by status"
+			},
+			/*legend: {
+				maxWidth: 200,
+				itemWidth: 100
+			},*/
+			data: [
+			{
+				type: "pie",
+				showInLegend: false,
+				legendText: "{indexLabel}",
+				dataPoints: [
+					{ y: 73, indexLabel: "Ongoing" },
+					{ y: 36, indexLabel: "Proposed" },
+					{ y: 19, indexLabel: "Completed"}
+				]
+			}
+			]
+		});
+		chart.render();
+		}
+	</script>
+		<div id="chart" style="height: 215px; width: 285px"></div>
+
 	</div>
 	<div id="attribute">
 	<p class="attribute">KEY: &nbsp<img src="img/green.png" height="20px" width="20px"> :Ongoing &nbsp<img src="img/red.png" height="20px" width="20px"> :Proposed &nbsp<img src="img/blue_dark.png" height="20px" width="20px"> :Complete
-	    &nbsp &nbsp &nbsp &nbsp &nbsp Click on project on map to display project details
+	    &nbsp &nbsp &nbsp &nbsp &nbsp Click on project on map to display project details &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+	    
 	</p>
 	</div>
+
 	
 	<div id="info" class="alert alert-success">
 	    &nbsp;

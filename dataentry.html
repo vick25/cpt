@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="http://localhost:82/cpt/img/favicon.png">
 <title>Nairobi City County Projects Entry Form</title>
 <link rel="stylesheet" type="text/css" href="form.css" media="all">
 
@@ -11,7 +12,7 @@
 	<img id="top" src="img/top.png" alt="">
 	<div id="form_container">
 	
-		<form id="form_1111661" class="appnitro"  method="post" action="cpt/datahandler.php">
+		<form id="form_1111661" class="appnitro"  method="post" action="dataHandler.php">
 			<div class="form_description">
 			<h3>Nairobi City County Projects Entry Form</h3>
 			<p>Enter details about development projects</p>
@@ -22,31 +23,31 @@
 		<li id="li_1" >
 		<label class="description" for="element_1">Project id </label>
 		<div>
-			<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="element_1" name="project_id" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		
 		<li id="li_2" >
 		<label class="description" for="element_2">Location </label>
 		<div>
-			<input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="element_2" name="location" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		
 		<li id="li_3" >
 		<label class="description" for="element_3">Project Description </label>
 		<div>
-			<textarea id="element_3" name="element_3" class="element textarea medium"></textarea> 
+			<textarea id="element_3" name="project_description" class="element textarea medium"></textarea> 
 		</div> 
 		</li>	
 
 		<li id="li_4" >
 		<label class="description" for="element_4">Financial Year </label>
 		<div>
-		<select class="element select medium" id="element_4" name="element_4"> 
+		<select class="element select medium" id="element_4" name="financial_year"> 
 			<option value="" selected="selected"></option>
-			<option value="1" >2012/2013</option>
-			<option value="2" >2013/2014</option>
-			<option value="3" >2014/2015</option>
-			<option value="4" >2015/2016</option>
+			<option value="2012/2013" >2012/2013</option>
+			<option value="2013/2014" >2013/2014</option>
+			<option value="2014/2015" >2014/2015</option>
+			<option value="2015/2016" >2015/2016</option>
 		</select>
 		</div> 
 		</li>
@@ -54,14 +55,14 @@
 		<li id="li_5" >
 		<label class="description" for="element_5">Sector/Department </label>
 		<div>
-		<select class="element select medium" id="element_5" name="element_5"> 
+		<select class="element select medium" id="element_5" name="sector"> 
 			<option value="" selected="selected"></option>
-			<option value="1" >Education and Social Services</option>
-			<option value="2" >ICT and E-Government</option>
-			<option value="3" >Trade, Industrialization and Tourism</option>
-			<option value="4" >Environment and Forestry</option>
-			<option value="5" >Health Services</option>
-			<option value="6" >Agriculture, Livestock and Fisheries</option>
+			<option value="Education and Social Services" >Education and Social Services</option>
+			<option value="ICT and E-Government" >ICT and E-Government</option>
+			<option value="Trade, Industrialization and Tourism" >Trade, Industrialization and Tourism</option>
+			<option value="Environment and Forestry" >Environment and Forestry</option>
+			<option value="Health Services" >Health Services</option>
+			<option value="Agriculture, Livestock and Fisheries" >Agriculture, Livestock and Fisheries</option>
 		</select>
 		</div> 
 		</li>		
@@ -69,25 +70,25 @@
 		<li id="li_6" >
 		<label class="description" for="element_6">Estimated cost </label>
 		<div>
-			<input id="element_6" name="element_6" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="element_6" name="estimated_cost" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>
 
 		<li id="li_7" >
 		<label class="description" for="element_7">Funding </label>
 		<div>
-			<input id="element_7" name="element_7" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="element_7" name="funding" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>
 
 		<li id="li_10" >
 		<label class="description" for="element_10">Project Status </label>
 		<div>
-		<select class="element select medium" id="element_10" name="element_10"> 
+		<select class="element select medium" id="element_10" name="status"> 
 			<option value="" selected="selected"></option>
-			<option value="1" >Proposed</option>
-			<option value="2" >Ongoing</option>
-			<option value="3" >Completed</option>
+			<option value="Proposed" >Proposed</option>
+			<option value="Ongoing" >Ongoing</option>
+			<option value="Completed" >Completed</option>
 
 		</select>
 		</div> 
@@ -96,14 +97,14 @@
 		<li id="li_8" >
 		<label class="description" for="element_8">Longitute </label>
 		<div>
-			<input id="element_8" name="element_8" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="element_8" name="lon" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		
 
 		<li id="li_9" >
 		<label class="description" for="element_9">Latitude </label>
 		<div>
-			<input id="element_9" name="element_9" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="element_9" name="lat" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>
 			

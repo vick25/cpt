@@ -79,16 +79,41 @@
 		name: 'Proposed projects'
 	});
 	proposedProjects.setVisible(false);
+
+	var _2013_2014_Source = new ol.source.TileWMS({
+		url: 'http://localhost:8080/geoserver/wms',
+		params: { 'LAYERS':'cpt:2013/2014'},
+		serverType:'geoserver'
+	});
+	var _2013_2014 = new ol.layer.Tile({ 
+		source:_2013_2014_Source,
+		name: '2013/2014'
+	});
+	_2013_2014.setVisible(false);
 	
+	var _2014_2015_Source = new ol.source.TileWMS({
+		url: 'http://localhost:8080/geoserver/wms',
+		params: { 'LAYERS':'cpt:2014/2015'},
+		serverType:'geoserver'
+	});
+	var _2014_2015 = new ol.layer.Tile({ 
+		source: _2014_2015_Source,
+		name: '2014/2015'
+	});
+	_2014_2015.setVisible(false);
+
+
 	//adding layers to the layers array
 	layersArray.push(osmlayer); //0
 	layersArray.push(countybnd); //1
 	layersArray.push(ongoingProjects); //2
 	layersArray.push(proposedProjects); //3
 	layersArray.push(completedProjects); //4
+	layersArray.push(_2014_2015);//5
+	layersArray.push(_2013_2014);//6
+	
 	//layersArray.push(allProjects); //5
 
-	
 	
 	//configure view properties for map instance 
 	var view = new ol.View({
@@ -120,19 +145,33 @@
 	}));
 
 	//control to display map coordinates
-	var mousePositionControl = new ol.control.MousePosition({
+	/*var mousePositionControl = new ol.control.MousePosition({
           className: 'custom-mouse-position',
           target: document.getElementById('location'),
           projection:'EPSG:4326' ,
           coordinateFormat: ol.coordinate.createStringXY(2),
           undefinedHTML: '&nbsp;'
-        });
+        });*/
+
+	var controls = [
+  		new ol.control.Attribution(),
+  		new ol.control.MousePosition({
+    	projection: 'EPSG:4326',
+    	coordinateFormat: function(coordinate) {
+      	return ol.coordinate.format(coordinate, '{x}, {y}', 4);
+    	}
+ 		}),
+  		new ol.control.ScaleLine(),
+  		new ol.control.Zoom(),
+  		new ol.control.ZoomSlider()
+  		//new ol.control.FullScreen()
+	];
 
 	
 	//create the map instance
 	var map = new ol.Map({
-		renderer: 'canvas',//force renderer to be used
-		controls: ol.control.defaults().extend([mousePositionControl]),
+		renderer: 'canvas',//force canvas to be used
+		controls: controls,//ol.control.defaults().extend([mousePositionControl]),
 		layers: layersArray,
 		overlays: [overlay],
 		target:'map',
@@ -141,7 +180,13 @@
 
 	//function to manage layer visibility
 	function switchlayer(e){
+		/*for (var i = layersArray.length - 1; i >= 0; i--) {
+
+			layersArray[i]
+		}*/
 		layersArray[e.value].setVisible(e.checked);
+		
+		
 	}
 
 
